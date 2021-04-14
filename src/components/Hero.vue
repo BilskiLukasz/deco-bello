@@ -52,7 +52,7 @@ export default {
             }
 
             &-one {
-                background-image: url('../assets/Hero-1.png');
+                background-image: url('../assets/header/Hero-1.jpg');
                 animation: fromLeft 1.6s, opacityFrom0 1.6s;
 
                 @media (min-width: 481px) {
@@ -61,12 +61,12 @@ export default {
             }
 
             &-two {
-                background-image: url('../assets/Hero-2.png');
+                background-image: url('../assets/header/Hero-2.jpg');
                 animation: fromUp 1.4s, opacityFrom0 1.4s;                
             }
 
             &-three {
-                background-image: url('../assets/Hero-3.png');
+                background-image: url('../assets/header/Hero-3.jpg');
                 animation: fromDownSlow 1.2s, opacityFrom0 1.2s;                
             }
         }     

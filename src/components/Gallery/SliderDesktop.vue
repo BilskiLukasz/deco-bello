@@ -96,7 +96,7 @@ export default {
     padding-bottom: 100%;    
     background-size: cover;
     position: relative;
-    transition: all 4s ease-in-out;
+    transition: all .4s ease-in-out;
 
     &:after {
       position: absolute;
@@ -105,11 +105,12 @@ export default {
       background-color: #A0909075;
       width: 100%;
       height: 100%;
-      transition: all 4s ease-in-out;
+      transition: all .2s ease-in-out;
     }
 
     &:hover {
-      background-size: 105%;
+      /* transform: scale(1.04);
+      z-index: 100; */
 
       &:after {
         background-color: unset;

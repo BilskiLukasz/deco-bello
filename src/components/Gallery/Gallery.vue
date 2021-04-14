@@ -60,7 +60,9 @@ export default {
             height: 300px;
             margin-top: -25px;
             position: relative;
-            background-size: cover;
+            background-size: auto 100%;
+            background-position: center;
+            background-repeat: no-repeat;
             z-index: 1;
 
             @media ( min-width: 768px ) {
