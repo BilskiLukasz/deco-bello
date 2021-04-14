@@ -1,7 +1,7 @@
 <template>
   <div class="gallery">
     <div class="gallery-title" v-if="$mq === 'tablet'">Przykładowe prace</div>
-    <div class="gallery-preview" :style="{'backgroundColor' : activeColor}"></div>
+    <div class="gallery-preview" :style="backgroundImg"></div>
     <SliderMobile :slideList="slideList" :mainSlide="mainSlide" @showSlide="showPreview" v-if="$mq === 'tablet'"/>
     <SliderDesktop :slideList="slideList" :mainSlide="mainSlide" @showSlide="showPreview" v-else/>
   </div>
@@ -26,9 +26,10 @@ export default {
         }
     },
     computed: {
-        activeColor() {
-            return this.slideList[this.mainSlide].bg
-        },
+    backgroundImg() {     
+      const bgurl = require(`@/assets/gallery/${this.slideList[this.mainSlide].bg}`);
+      return 'background-image:' + `url(${bgurl})`
+    }
     }
 }
 </script>
@@ -59,6 +60,7 @@ export default {
             height: 300px;
             margin-top: -25px;
             position: relative;
+            background-size: cover;
             z-index: 1;
 
             @media ( min-width: 768px ) {

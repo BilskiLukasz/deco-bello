@@ -1,19 +1,19 @@
 <template> 
   <div class="slider-desktop">
-    <div class="content-container">  
+    <div class="content-container"> 
+            
       <div class="gallery-title">Przykładowe prace</div>    
       <div class="slider-thumbnails">        
         <div class="slider-thumbnails-grid">
           <div v-for="slide of slideList" 
               :key="slide"
               @click="changeMainSlide(slide.id)"
-              :style="backgroundImg"
+              :style="backgroundImg(slide.bg)"
               class="grid-item"
               >
           </div>
         </div>
       </div>
-      <img src="@/assets/gallery/gallery(2).jpg"/>
     </div>      
   </div>
 </template>
@@ -22,23 +22,17 @@
 export default {
   name: 'SliderDesktop',
   props: ['slideList', 'mainSlide'],
-  data() {
-    return {
-      publicPath: process.env.BASE_URL,
-    }
-  },
   methods: {
     changeMainSlide(id) {
       this.$emit('showSlide', id)
     },
-
+    backgroundImg(background) {     
+      const bgurl = require(`@/assets/gallery/${background}`);
+      return 'background-image:' + `url(${bgurl})`
+    }
   },
   computed: {
-    backgroundImg() {     
-      const bgurl = require(`@/assets/gallery/gallery(1).jpg`);
-      console.log(bgurl)
-      return `background: url(${bgurl});`
-    }
+
   }
 }
 </script>
@@ -101,5 +95,27 @@ export default {
     cursor: pointer;
     padding-bottom: 100%;    
     background-size: cover;
+    position: relative;
+    transition: all 4s ease-in-out;
+
+    &:after {
+      position: absolute;
+      display: block;
+      content: '';      
+      background-color: #A0909075;
+      width: 100%;
+      height: 100%;
+      transition: all 4s ease-in-out;
+    }
+
+    &:hover {
+      background-size: 105%;
+
+      &:after {
+        background-color: unset;
+      }
+
+    }
+
   }
 </style>

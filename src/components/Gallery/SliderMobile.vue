@@ -4,7 +4,7 @@
         <div v-for="slide of slideList" 
             :key="slide"
             @click="changeMainSlide(slide.id)"
-            :style="{'backgroundColor': slide.bg}"
+            :style="backgroundImg(slide.bg)"
             class="slider-img"
             :class="{'slider-img-prev1' : this.prev1 == slide.id,
                     'slider-img-prev2' : this.prev2 == slide.id,
@@ -44,6 +44,10 @@ export default {
         },
         setCurrentSlide(id) {
             this.currentSlide = id
+        },
+        backgroundImg(background) {     
+            const bgurl = require(`@/assets/gallery/${background}`);
+            return 'background-image:' + `url(${bgurl})`
         }
     }, 
     computed: {
@@ -88,6 +92,7 @@ export default {
             opacity: 1;
             cursor: pointer;
             display: none;
+            background-size: cover;
             @media(min-width:560px) {
                 width: 150px;
                 height: 120px;  
